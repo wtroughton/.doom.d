@@ -44,6 +44,12 @@
 (if (window-system)
   (set-frame-size (selected-frame) 140 60))
 
+;; Command to insert today's date
+(defun insert-current-date () (interactive)
+  (insert (shell-command-to-string "echo -n $(date '+%A, %B %d, %Y')")))
+
+(global-set-key (kbd "C-c d") 'insert-current-date)
+
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
 ;;
